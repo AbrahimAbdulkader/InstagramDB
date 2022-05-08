@@ -25,5 +25,16 @@ CREATE TABLE comments (
     FOREIGN KEY(photo_id) REFERENCES photos(id) #photo_id links to the id in the comments table 
 ); 
 
+
+CREATE TABLE likes (
+
+    user_id INT NOT NULL, 
+    photo_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY(user_id) REFERENCES users(id), #user_id referencing id in users table
+    FOREIGN KEY(photo_id) REFERENCES photos(id), #photo_id referencing id in the photos table
+    PRIMARY KEY(user_id, photo_id) #Ensures that a user doesn't enter 2 likes on the same photo
+);
+
           
         
