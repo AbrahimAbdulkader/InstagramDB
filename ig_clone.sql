@@ -36,5 +36,14 @@ CREATE TABLE likes (
     PRIMARY KEY(user_id, photo_id) #Ensures that a user doesn't enter 2 likes on the same photo
 );
 
+CREATE TABLE follows (
+    follower_id INTEGER NOT NULL,
+    followee_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY(follower_id) REFERENCES users(id),
+    FOREIGN KEY(followee_id) REFERENCES users(id),
+    PRIMARY KEY(follower_id, followee_id)
+);
+
           
         
